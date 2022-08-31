@@ -26,30 +26,29 @@ function App() {
       .then((result) => result.json())
       .then((data) => {
         console.log(data, accessToken?.access_token);
-        setAccessToken(data);
+        setAccessToken(accessToken.access_token);
         if (accessToken) {
           search();
         }
       });
   }, []);
 
-  console.log(accessToken);
+
 
   //Search
 
   function search() {
-    console.log(accessToken);
-    console.log("Search for" + searchInput);
+
 
     //obtenir une requête en utilisant la recherche pour obtenir l'identifiant de l'artiste
     let artisteParameters = {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + accessToken?.access_token,
+        "Authorization": "Bearer " + accessToken?.access_token,
       },
     };
-    console.log(accessToken);
+
     fetch(
       "https://api.spotify.com/v1/search?q=" +
         searchInput +
@@ -59,7 +58,7 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       });
     //obtenir une requête en utilisant la recherche par le nom de l'album de l'artiste
     // let returndAlbums = fetch(
@@ -93,8 +92,8 @@ function App() {
         ></input>
         <button onClick={search}>Sarch</button>
       </form>
-      <div className="menu">
-        {album.map((album, i) => {
+      {/* <div className="menu">
+        {/* {album.map((album, i) => {
           return (
             <main
               style={{
@@ -107,8 +106,8 @@ function App() {
               <h5>{album}</h5>
             </main>
           );
-        })}
-      </div>
+        })} 
+      </div> */}
       <div
         style={{
           display: "flex",
