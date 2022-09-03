@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-// import Logdlog from "./COMPONENT/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Container,
@@ -14,16 +13,11 @@ import {
 const CLIENT_ID = "8eeb90f7753a45548dd9e8a19da17fd9";
 const CLIENT_SECRET = "665e67a536144aa9ab70cf954e51d307";
 
-// function RetourRes() {
-//   return (
-
-//   );
-// }
 
 function App() {
-  const [searchInput, setSearchInput] = useState("gims");
+  const [searchInput, setSearchInput] = useState("");
   const [accessToken, setAccessToken] = useState();
-  const [album, setAlbum] = useState("");
+  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     //API ACCCESS TOKEN
@@ -39,66 +33,49 @@ function App() {
         CLIENT_SECRET,
     };
     fetch("https://accounts.spotify.com/api/token", authParameters)
-      .then((result) => result.json())
-      .then((data) => {
-        console.log(data, accessToken?.access_token);
-        setAccessToken(data.access_token);
-        console.log(accessToken?.access_token);
-      });
-  }, []);
-  useEffect(() => {
-    if (accessToken) search();
-  }, [accessToken]);
+      .then(result => result.json())
+      .then(data => setAccessToken(data.access_token))
 
-  search();
+
+  }, []);
+
+  //Search
 
   async function search() {
-    console.log(accessToken.access_token);
-    //obtenir une requête en utilisant la recherche pour obtenir l'identifiant de l'artiste
-    let artisteParameters = {
+    console.log("Search for" + searchInput);
+
+
+    let searchParameters = {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + accessToken?.access_token,
+        Authorization: "Bearer " + accessToken
       },
-    };
+    }
     let artistID = await fetch(
       "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
-      artisteParameters
+      searchParameters
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        return data.artists && data.artists.items && data.artists.items[0].id;
-      });
 
-    fetch(
-      `https://api.spotify.com/v1/search?q=${searchInput}
-        &type=artist&limit=20/n`,
-      artisteParameters
-    )
-      .then((response) => response.json())
-      .then((data) => {
         return data.artists.items[0].id;
       });
+    // search()
+    console.log("Artist Id is" + artistID )
 
-    console.log("l'artiste c'est " + artistID);
-    // obtenir une requête en utilisant la recherche par le nom de l'album de l'artiste
-    let returndAlbums = fetch(
-      "https://api.spotify.com/v1/artists/" +
-      artistID +
-      "/albums" +
-      "?include_groups=album&market=US&limit=50" +
-      artisteParameters
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setAlbum(data.items);
+    let returnedAlbums = await fetch('https://api.spotify.com/v1/artists' + artistID + '/albums' + '?include_groups=album&market=US&limit=50')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        setAlbums(data.items);
       });
   }
+  console.log(albums);
+  // obtenir une requête en utilisant la recherche par le nom de l'album de l'artiste
+
   return (
-    <div>
+    <div className="App">
       <Container>
         <InputGroup className="mb-3" size="1g">
           <FormControl
@@ -106,48 +83,31 @@ function App() {
             type="input"
             onKeyPress={(event) => {
               if (event.key == "Enter") {
-                console.log("Pressed enter");
+                search();
               }
             }}
             onChange={(event) => setSearchInput(event.target.value)}
           />
           <Button
-            onClick={() => {
-              console.log("clicked Button");
-            }}
-          >
+            onClick={search}>
             Search
           </Button>
         </InputGroup>
       </Container>
       <Container>
-        <Row className="mx-2 row-cols-4">
-          <Card>
-            <Card.Img src="#" />
-            <Card.Body>
-              <Card.Title>album name Here</Card.Title>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Img src="#" />
-            <Card.Body>
-              <Card.Title>album name Here</Card.Title>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Img src="#" />
-            <Card.Body>
-              <Card.Title>album name Here</Card.Title>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Img src="#" />
-            <Card.Body>
-              <Card.Title>album name Here</Card.Title>
-            </Card.Body>
-          </Card>
+        <Row className="mx-2 row row-cols-4">
+          {albums.map((album, i) => {
+            console.log(album)
+            return (
+              <Card>
+                <Card.Img src={album.images[0].url} />
+                <Card.Body>
+                  <Card.Title>{album.name}</Card.Title>
+                </Card.Body>
+              </Card>
+            )
+          })}
         </Row>
-
       </Container>
     </div>
   );
