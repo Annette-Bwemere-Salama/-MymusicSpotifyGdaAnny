@@ -102,12 +102,14 @@ button:focus-visible {
     width: 400px;
   }   */
 
-  /* .App{
+  .App{
 
-    background: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
-    url("./assets/lumiere.png")
+    background: linear-gradient(rgba(2, 2, 48, 0.5), rgba(190, 190, 99, 0.5)),
+    url("./assets/lumiere.png");
+    background-position: right;
+    
   }
-  */
+ 
 
 
 
