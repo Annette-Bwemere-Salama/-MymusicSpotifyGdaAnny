@@ -43,7 +43,7 @@ function App() {
   //Search
 
   async function search() {
-    console.log("Search for" + searchInput);
+    console.log("Search for" + (" ") + searchInput);
 
 
     let searchParameters = {
@@ -81,7 +81,7 @@ function App() {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        // setAlbums(data.items);
+        setAlbums(data.items);
       });
   }, [artistId])
   console.log(albums);
