@@ -18,6 +18,7 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [accessToken, setAccessToken] = useState();
   const [albums, setAlbums] = useState([]);
+  const [artistId, setArtistId] = useState('')
 
   useEffect(() => {
     //API ACCCESS TOKEN
@@ -52,25 +53,37 @@ function App() {
         Authorization: "Bearer " + accessToken
       },
     }
-    let artistID = await fetch(
+    fetch(
       "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
       searchParameters
     )
-      .then((response) => response.json())
-      .then((data) => {
-
-        return data.artists.items[0].id;
-      });
-    // search()
-    console.log("Artist Id is" + artistID )
-
-    let returnedAlbums = await fetch('https://api.spotify.com/v1/artists' + artistID + '/albums' + '?include_groups=album&market=US&limit=50')
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        setAlbums(data.items);
-      });
+        setArtistId(data.artists.items[0].id);
+      })
+    // search()
+
   }
+
+  useEffect(() => {
+    console.log("Artist Id is" + artistId)
+
+    let searchParameters = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken
+      },
+    }
+
+    fetch("https://api.spotify.com/v1/artists/" + artistId + '/albums', searchParameters)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // setAlbums(data.items);
+      });
+  }, [artistId])
   console.log(albums);
   // obtenir une requête en utilisant la recherche par le nom de l'album de l'artiste
 
@@ -96,7 +109,7 @@ function App() {
       </Container>
       <Container>
         <Row className="mx-2 row row-cols-4">
-          {albums.map((album, i) => {
+          {albums && albums.map((album, i) => {
             console.log(album)
             return (
               <Card>
@@ -112,5 +125,28 @@ function App() {
     </div>
   );
 }
+
+// function twoSum(numbe, target) {
+//   let vals = {};
+//   for (let i = 0; i < numbe.length; i++) {
+//     if (target - numbe[i] in vals) {
+//       return [vals[target - numbe[i]], i]
+
+//     } else {
+//       vals[numbe[i], i]
+//     }
+//     return []
+
+//   }
+// }
+// function twoSum(nums, target) {
+//   let sommes = {}
+//   for (const target in nums) {
+//     if (nums.hasOwnProperty.call(nums, target)) {
+//       const element = nums[target];
+
+//     }
+//   }
+// }
 
 export default App;
