@@ -1,12 +1,12 @@
-import React from 'react'
+// import React from 'react'
 
-function Footer() {
-    return (
-        <div>
-            <p>(c)reservation by annette bwemere</p>
+// function Footer() {
+//     return (
+//         <div>
+//             <p>(c)reservation by annette bwemere</p>
 
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
 
-export default Footer
+// export default Footer

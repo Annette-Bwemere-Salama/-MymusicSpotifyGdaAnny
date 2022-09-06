@@ -1,24 +1,16 @@
 
 import Music from "./COMPONENT/music";
-import Logdlog from "./COMPONENT/Login";
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import NavBar from "./COMPONENT/NavBar";
-import Footer from "./COMPONENT/Footer";
+// import Logdlog from "./COMPONENT/Login";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
+    <div>
+      {/* <Logdlog /> */}
+      <Music />
+
+    </div>
 
 
-        <Route exact path="/" component={<Logdlog />} />
-        <Route path="/search" component={<Music />} />
-
-
-      </Routes>
-      <Footer />
-    </BrowserRouter >
 
 
   )
