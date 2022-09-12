@@ -1,17 +1,24 @@
 
-import Music from "./COMPONENT/music";
-// import Logdlog from "./COMPONENT/Login";
+import React from "react";
+import Music from "./COMPONENT/Music";
+import Loglog from "./COMPONENT/Loglog"
+import Login from "./COMPONENT/Login";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import './App.css'
+
 
 function App() {
+
   return (
-    <div>
-      {/* <Logdlog /> */}
-      <Music />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Loglog" element={<Loglog />} />
+        <Route path="/Music" element={<Music />} />
 
-    </div>
+      </Routes>
 
-
-
+    </BrowserRouter>
 
   )
 }

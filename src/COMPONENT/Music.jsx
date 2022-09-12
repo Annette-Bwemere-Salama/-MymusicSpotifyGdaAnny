@@ -9,6 +9,7 @@ import {
     Button,
     Row,
     Card,
+
 } from "react-bootstrap";
 // import { BsFillCaretRightSquareFill } from "react-icons/bs";
 
@@ -18,14 +19,14 @@ const CLIENT_SECRET = "665e67a536144aa9ab70cf954e51d307";
 
 
 export default function Music() {
-    const [searchInput, setSearchInput] = useState("Moise Mbiye");
+    const [searchInput, setSearchInput] = useState("MIKE KALAMBAY");
     const [accessToken, setAccessToken] = useState();
     const [albums, setAlbums] = useState([]);
     const [artistId, setArtistId] = useState('');
     let maLecture = null;
 
     useEffect(() => {
-        //API ACCCESS TOKEN
+        //API ACCCESS TOKEN  acceder au token
         let authParameters = {
             method: "POST",
             headers: {
@@ -96,7 +97,6 @@ export default function Music() {
                     <FormControl
                         placeholder="Search for Artist"
                         type="input"
-
                         onKeyPress={(event) => {
                             maLecture = "https://open.spotify.com/embed/album/" + albums[0].id + "?utm_source=generator"
                             if (event.key == "Enter") {
@@ -109,19 +109,19 @@ export default function Music() {
                     />
                     <Button
                         onClick={search}
-                    >
+                        className="glyphicon glyphicon-search">
                         Search
                     </Button>
                 </InputGroup>
             </Container>
 
-            <Container>
+            <Container className='text-bg-success '>
 
                 <Row className="ms-2 row">
                     {albums && albums.map((album, i) => {
                         return (
                             <Card key={i} className='col-md-3 m-3 text-dark'>
-                                <Card.Img src={album.images[0].url} />
+                                <Card.Img src={album.images[0].url} className=' img-circle' />
                                 <Card.Body>
                                     <Card.Title>{album.name}</Card.Title>
                                 </Card.Body>

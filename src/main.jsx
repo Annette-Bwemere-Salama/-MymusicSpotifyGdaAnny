@@ -1,5 +1,8 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { StateContext, StateProvider } from "./utils/StateProvider";
+import reducer, { initialState } from "./utils/reducer"
 
 import App from "./App";
 import "./index.css";
@@ -7,10 +10,10 @@ import "./index.css";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div>
-    <App />
-  </div>
-
-
-
+  <React.StrictMode>
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <App />
+    </StateProvider>,
+  </React.StrictMode>
 );
+export const useStateProvider = () => useContext(StateContext);
