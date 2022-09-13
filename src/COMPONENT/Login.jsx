@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Container, Card
+    Container
 } from 'react-bootstrap'
 import './Login.css';
 import { useNavigate } from 'react-router-dom';

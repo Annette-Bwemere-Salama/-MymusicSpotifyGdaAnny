@@ -14,6 +14,7 @@ export default function Logdlog() {
         console.log(userObject);
         setUser(userObject);
         document.getElementById("signInDiv").hidden = true;
+        navigateR("/Music")
     }
 
     function handleSignOut() {
@@ -31,6 +32,10 @@ export default function Logdlog() {
         });
 
         google && google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+
+            // if (google login = true) {
+
+            // }
             theme: "outline",
             size: "large",
         });
@@ -40,7 +45,7 @@ export default function Logdlog() {
         <div className="Logdlog">
             <div id="signInDiv"></div>
             {Object.keys(user).length != 0 && (
-                <button onClick={(e) => { handleSignOut(e); navigateR("/Music") }
+                <button onClick={(e) => { handleSignOut(e); }
                 }>Sign Out </button>
             )}
             {user && (

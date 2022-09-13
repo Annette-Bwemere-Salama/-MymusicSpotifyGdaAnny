@@ -5,7 +5,7 @@ body {
 
 .App {
   margin-left: 0;
-  color: blue;
+  /* color: blue; */
 }
 
 .main {
@@ -16,6 +16,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url("./public/spotifymusic.png");
+  background-image: url("./public/casque.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
 }
