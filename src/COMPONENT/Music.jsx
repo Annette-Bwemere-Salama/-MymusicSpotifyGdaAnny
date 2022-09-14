@@ -14,12 +14,15 @@ import {
 // import { BsFillCaretRightSquareFill } from "react-icons/bs";
 
 
-const CLIENT_ID = "8eeb90f7753a45548dd9e8a19da17fd9";
-const CLIENT_SECRET = "665e67a536144aa9ab70cf954e51d307";
+// eslint-disable-next-line no-undef
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID
+console.log(CLIENT_ID);
+// eslint-disable-next-line no-undef
+const CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET
 
 
 export default function Music() {
-    const [searchInput, setSearchInput] = useState("MIKE KALAMBAY");
+    const [searchInput, setSearchInput] = useState("Dadju");
     const [accessToken, setAccessToken] = useState();
     const [albums, setAlbums] = useState([]);
     const [artistId, setArtistId] = useState('');
@@ -115,7 +118,7 @@ export default function Music() {
                 </InputGroup>
             </Container>
 
-            <Container className='text-bg-success '>
+            <Container className=''>
 
                 <Row className="ms-2 row">
                     {albums && albums.map((album, i) => {
@@ -131,7 +134,7 @@ export default function Music() {
 
                 </Row>
                 <div style={{ zIndex: 40, position: 'fixed', bottom: 0, left: 0 }}>
-                    <iframe style={{ backgroundColor: 'grey', zIndex: 70 }} src={`https://open.spotify.com/embed/artist/${artistId}?utm_source=generator`} width="300" height="300" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style={{ backgroundColor: 'grey', zIndex: 70 }} src={`https://open.spotify.com/embed/artist/${artistId}?utm_source=generator`} width="940" height="100" frameBorder="3" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
 
             </Container>

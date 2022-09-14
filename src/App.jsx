@@ -15,7 +15,6 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/Loglog" element={<Loglog />} />
         <Route path="/Music" element={<Music />} />
-
       </Routes>
 
     </BrowserRouter>

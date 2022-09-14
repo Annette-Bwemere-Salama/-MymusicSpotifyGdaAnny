@@ -1,6 +1,6 @@
 body {
   min-height: 100vh;
-  /* background: rgb(0, 3, 1); */
+  background: #f0eded;
 }
 
 .App {
@@ -19,4 +19,13 @@ body {
   background-image: url("./public/casque.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+.faspotify {
+  display: flex;
+  color: black;
+}
+.icons {
+  background-color: #198754;
+  height: 50px;
+  width: 50px;
 }

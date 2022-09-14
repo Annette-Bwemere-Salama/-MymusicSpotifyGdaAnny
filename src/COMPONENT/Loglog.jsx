@@ -26,8 +26,10 @@ export default function Logdlog() {
         /* global google*/
         console.log('auth')
         google && google.accounts.id.initialize({
-            client_id:
-                "113265393676-aik3m9ah8an7c0tftv04ktrhbds8gs4g.apps.googleusercontent.com",
+            // eslint-disable-next-line no-undef
+            client_idgoogle:
+                import.meta.env.VITE_CLIENT_ID_GOOGLE,
+            // "113265393676-aik3m9ah8an7c0tftv04ktrhbds8gs4g.apps.googleusercontent.com",
             callback: handleCallbackResponse,
         });
 
