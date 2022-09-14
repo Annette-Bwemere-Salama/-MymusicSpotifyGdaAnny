@@ -29,7 +29,7 @@ export default function Logdlog() {
             // eslint-disable-next-line no-undef
             client_idgoogle:
                 import.meta.env.VITE_CLIENT_ID_GOOGLE,
-            // "113265393676-aik3m9ah8an7c0tftv04ktrhbds8gs4g.apps.googleusercontent.com",
+          
             callback: handleCallbackResponse,
         });
 
