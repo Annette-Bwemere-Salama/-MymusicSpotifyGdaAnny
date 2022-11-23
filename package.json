@@ -6,17 +6,39 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "npx eslint App.jsx"
   },
   "dependencies": {
     "bootstrap": "^5.2.0",
+    "gapi-script": "^1.2.0",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "^18.2.0",
+    "react-google-login": "^5.2.2",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
+    "eslint": "^8.23.0",
+    "eslint-plugin-react": "^7.31.7",
     "vite": "^3.0.7"
-  }
+  },
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Annette-Bwemere-Salama/MymusicSpotifyGdaAnny.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Annette-Bwemere-Salama/MymusicSpotifyGdaAnny/issues"
+  },
+  "homepage": "https://github.com/Annette-Bwemere-Salama/MymusicSpotifyGdaAnny#readme",
+  "description": ""
 }

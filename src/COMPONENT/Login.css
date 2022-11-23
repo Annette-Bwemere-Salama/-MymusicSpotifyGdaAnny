@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.contenue {
+  background-image: linear-gradient(rgba(61, 145, 83, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./src/assets/mmmm.jpg");
+  background-repeat: no-repeat;
+}

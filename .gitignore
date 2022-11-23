@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# mes secrets comme client-id et autre chose
+.env
+
